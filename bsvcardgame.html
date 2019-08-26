@@ -1,0 +1,540 @@
+﻿<html oncontextmenu="return false">
+<head>
+    <title>Bitcoin SV Card Game | Match Pairs</title>
+    <link rel="stylesheet" type="text/css" href="https://bico.media/d0ce04739b64dbfa48cdf14aa994233ba1c3ebc6eaf81bea21a57253ea527246">
+    <script src="https://bico.media/b7d0a7df187acc07eea18c00e1c66b723b918088983ae64b13da1c2c198a7ab3"></script>
+    <script type="text/javascript">
+
+        // Original JavaScript game code by Chirp Internet: www.chirp.com.au
+        var game = new cardGame("stage");
+    </script>
+    <script src="https://www.moneybutton.com/moneybutton.js"></script>
+    <script src='https://unpkg.com/datapay'></script>
+    <script src='https://unpkg.com/databutton'></script>
+    <script src="https://bico.media/2563ab0f86a790e33f2083ccd49141f5f89f789033eb47af220cabeedfda92f7"></script>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+
+
+
+    <center>
+        <a href="https://bsv.guru"></a>
+        <img border="0" alt="BSV Guru header" src="https://bico.media/d21ec0f44b6562f8d63c1220a2c43508b4db7fadb5563d5cbe6d3ca696c21b6a">
+
+    </center><br>
+    <h1><center>Satoshi Vision Pairs</center></h1><br>
+    <div><center>This project is all hosted (html, css, js and images) on the Bitcoin SV blockchain, I will be writing up a guide on how this was achieved on my blog. <a href="https://bsv.guru">https://bsv.guru</a><br><br>Satoshi Vision Pairs is free to play, users can choose to pay with Moneybutton to save your score to the onchain leaderboard forever.<br><br>Use your Satoshi Vision to find pairs, clear the cards in the fewest moves and record your lowest score on the leaderboard on the Bitcoin SV blockchain.<br> CLICK THE DECK TO START A GAME</center></div>
+    <br>
+
+
+
+    <div id="stage">
+        <div id="felt">
+            <div id="card_0"><img onclick="cardClick(0);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_1"><img onclick="cardClick(1);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_2"><img onclick="cardClick(2);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_3"><img onclick="cardClick(3);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_4"><img onclick="cardClick(4);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_5"><img onclick="cardClick(5);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_6"><img onclick="cardClick(6);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_7"><img onclick="cardClick(7);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_8"><img onclick="cardClick(8);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_9"><img onclick="cardClick(9);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_10"><img onclick="cardClick(10);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_11"><img onclick="cardClick(11);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_12"><img onclick="cardClick(12);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_13"><img onclick="cardClick(13);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_14"><img onclick="cardClick(14);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+            <div id="card_15"><img onclick="cardClick(15);" src="https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370"></div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="column">
+
+                <form>
+                    <h1>Your Moves: <output id="moves"></output></h1>
+                    <h1>Pairs Remaining: <output id="pairsRemaining"></output></h1>
+
+                    <output id="moves2"></output>
+                    <br>
+
+                    <button><a href="javascript:location.reload(true)"><h2>RESTART</h2></a></button>
+                    <button onclick="restart()"><h2>RESTART2</h2></button>
+                    <br>
+                    <br>
+
+                </form>
+            </div>
+
+
+
+            <div class="column">
+
+
+                <h1><right>Leaderboard</right></h1>
+
+
+                <br>
+
+                <form name="form1">
+                    <input type="text" name="text1" placeholder="Add Name"><!--adds username and calls button function-->
+                    <br />
+                    <input type="button" value="Add Score" onClick="addScore(),update()">
+                    <br />
+                </form>
+                <div id="button"></div> <p>
+                    <!--moneybutton placement-->
+                    <button onclick="showTable()">Show Table</button> <!--refresh table button, you can leave or show this-->
+
+                    <br>
+                <p><button onclick="sortTable2()">Sort by Moves</button><button onclick="sortTable()">Sort by Pairs Remaining</button></p>
+                <br>
+
+                <table id="table" border="1" cellpadding="10" cellspacing="0" style="border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Moves</th>
+                            <th>Pairs Remaining</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div><br>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script>
+
+        /*    function getachievement() {
+              //check achievement
+              if(movescount<10){
+                alert('Are you Satoshi? Well done!')
+                        movescount = movescount - 10;
+                document.getElementById('achievement').style.display='inline';
+              }
+          } */
+        var cardGame;
+
+
+        var movescount = 0;
+        var pairsRemaining = 8;
+
+        function update() {
+            document.getElementById('moves').value = movescount;
+            document.getElementById('pairsRemaining').value = pairsRemaining;
+            document.title = movescount + ' Moves';
+            sessionStorage.moves = movescount;
+            sessionStorage.pairs = pairsRemaining;
+        }
+
+        function add() {
+            movescount++;
+            update();
+        }
+
+        // game over
+        function restart() {
+            game();
+            cards_turned = 0;
+            matches_found = 0;
+            started = false;
+        }
+
+
+    </script>
+
+
+
+    <script>
+
+        var card_value = ['1C', '2C', '3C', '4C', '5C', '6C', '7C', '8C', '1H', '2H', '3H', '4H', '5H', '6H', '7H', '8H'];
+
+        // set default positions
+        var card_left = [];
+        var card_top = [];
+
+        for (var i = 0; i < 16; i++) {
+            card_left[i] = 510 + 100 * (i % 4);
+            card_top[i] = 15 + 120 * Math.floor(i / 4);
+        }
+
+        var started = false;
+        var cards_turned = 0;
+        var matches_found = 0;
+        var card1 = false;
+        var card2 = false;
+
+        function moveToPlace(id) {
+            var el = document.getElementById("card_" + id);
+            el.style["zIndex"] = 1000;
+            el.style["left"] = card_left[id] + "px";
+            el.style["top"] = card_top[id] + "px";
+            el.style["WebkitTransform"] = "rotate(180deg)";
+            el.style["zIndex"] = 0;
+        }
+
+        function hideCard(id) {
+            var el = document.getElementById("card_" + id);
+            el.firstChild.src = "https://bico.media/231abe9d93c835d955972024608f960c7669af1cda740727fe9d52d8be68f370";
+            el.style["WebkitTransform"] = "scale(1.0) rotate(180deg)";
+            el.style["MozTransform"] = "scale(1.0)";
+            el.style["OTransform"] = "scale(1.0)";
+            el.style["msTransform"] = "scale(1.0)";
+        }
+
+        function moveToPack(id) {
+            hideCard(id);
+            var el = document.getElementById("card_" + id);
+            el.style["zIndex"] = 1000;
+            el.style["left"] = "-140px";
+            el.style["top"] = "100px";
+            el.style["WebkitTransform"] = "rotate(0deg)";
+            el.style["zIndex"] = 0;
+        }
+
+        // flip over card and check for match
+
+        function showCard(id) {
+            if (id === card1) return;
+            var el = document.getElementById("card_" + id);
+            el.firstChild.src = "https://bsv.guru/wp-content/uploads/2019/07/" + card_value[id] + ".png";
+            el.style["WebkitTransform"] = "scale(1.2) rotate(185deg)";
+            el.style["MozTransform"] = "scale(1.2)";
+            el.style["OTransform"] = "scale(1.2)";
+            el.style["msTransform"] = "scale(1.2)";
+            if (++cards_turned == 2) {
+                card2 = id;
+
+                // check whether both cards have the same value
+                if (parseInt(card_value[card1]) == parseInt(card_value[card2])) {
+                    setTimeout("moveToPack(" + card1 + "); moveToPack(" + card2 + ");", 1000);
+
+                    matches_found + 1;
+                    pairsRemaining--;
+                    //console.log(matches_found);
+                    //console.log(pairsRemaining);
+                    update();
+
+                    if (++matches_found == 8) {
+                        completed = true;
+                        console.log(completed);
+                        alert("Congratulations!\nTo save your score, swipe the Moneybutton then add your name to the Leaderboard\nOr click restart");
+
+                    }
+                } else {
+                    setTimeout("hideCard(" + card1 + "); hideCard(" + card2 + ");", 800);
+                }
+                card1 = card2 = false;
+                cards_turned = 0;
+            } else {
+                card1 = id;
+                add();
+            }
+        }
+
+        // ON CARD CLICK
+
+        function cardClick(id) {
+            if (started) {
+                showCard(id);
+            } else {
+                // shuffle and deal cards
+                card_value.sort(function () { return Math.round(Math.random()) - 0.5; });
+                for (i = 0; i < 16; i++) setTimeout("moveToPlace(" + i + ")", i * 100);
+                started = true;
+            }
+        }
+
+
+
+
+
+    </script>
+
+    <script>
+
+
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("table");
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("td")[2];
+                    y = rows[i + 1].getElementsByTagName("td")[2];
+                    //check if the two rows should switch place:
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        function sortTable2() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("table");
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("td")[1];
+                    y = rows[i + 1].getElementsByTagName("td")[1];
+                    //check if the two rows should switch place:
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        // BLOCK USE OF F12
+
+        $(document).keydown(function (e) {
+            if (e.which === 123) {
+
+                return false;
+
+            }
+
+        });
+
+        // CLEAR CONSOLE WHEN INSPECTOR OPEN
+
+        var currentHtmlContent;
+
+        var element = new Image();
+
+        var elementWithHiddenContent = document.getElementById("moves2");
+
+        var innerHtml = elementWithHiddenContent.innerHTML;
+
+
+
+        element.__defineGetter__("id", function () {
+
+            currentHtmlContent = "";
+
+        });
+
+
+
+        setInterval(function () {
+
+            currentHtmlContent = innerHtml;
+
+            console.log(element);
+
+            console.clear();
+
+            elementWithHiddenContent.innerHTML = currentHtmlContent;
+
+        }, 1000);
+
+    </script>
+    <script>
+        function addScore() {
+            databutton.build({
+                data: [document.form1.text1.value, sessionStorage.moves, sessionStorage.pairs],
+                button: {
+                    $el: "#button",
+                    onPayment: function (msg) { showTable() },//on payment show leaderboard
+
+                    onError: function (err) { console.log(err) },
+                    $pay: {
+                        to: [{
+                            address: "1DKN9AQc6eGCfBZDaBjhTzYK4iYdAbJo5u",//tracking addy
+
+
+                            value: 1000
+                        }]
+                    }
+                }
+            })
+        }
+        /*creates moneybutton that uploads scores*/
+    </script>
+    <script>
+    function refreshTable() {
+        var elmtTable = document.getElementById('table');
+            var rows = elmtTable.getElementsByTagName('tr');
+            var rowCount = rows.length;
+            for (var x = rowCount - 1; x > 0; x--) {
+                elmtTable.removeChild(rows[x]);
+
+            };
+    }
+        // show leaderboard
+    function showTable() {
+            var elmtTable = document.getElementById('table');
+            var rows = elmtTable.getElementsByTagName('tr');
+            var rowCount = rows.length;
+            for (var x = rowCount - 1; x > 0; x--) {
+                elmtTable.removeChild(rows[x]);
+
+            };
+            
+            var query = {
+
+                "v": 3,
+                "q": {
+                    "find": {
+                        "out.e.a": "1DKN9AQc6eGCfBZDaBjhTzYK4iYdAbJo5u"
+                    },
+                },
+                "r": {
+                    "f": "[ .[] | {user: .out[0].s1 , moves: .out[0].s2, pairsLeft: .out[0].s3, timestamp: .blk.t?}]"
+                }
+            }
+            var b64 = btoa(JSON.stringify(query));
+            var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/" + b64;
+
+            var header = {
+                headers: { key: "1MvT3W7k8ww5VgCBdigSqbsMPsG9Rkmu7o" }
+            };
+            fetch(url, header).then(function (r) {
+                return r.json()
+            }).then(function (r) {
+                r.c.forEach(function (output) {//r.c for confirmed, r.u for unconfirmed
+
+                    var date = convertunix(output.timestamp);
+                    var table = document.getElementById("table");
+
+                    var firstrow = table.insertRow();
+
+                    var x1 = firstrow.insertCell(0);
+                    var x2 = firstrow.insertCell(1);
+                    var x3 = firstrow.insertCell(2);
+                    var x4 = firstrow.insertCell(3);
+
+
+                    x1.innerHTML = output.user;
+                    x2.innerHTML = output.moves;
+                    x3.innerHTML = output.pairsLeft;
+                    x4.innerHTML = date;
+
+                })
+                r.u.forEach(function (output) {//r.c for confirmed, r.u for unconfirmed
+
+                    var date = convertunix(output.timestamp);
+                    var table = document.getElementById("table");
+
+                    var firstrow = table.insertRow();
+
+                    var x1 = firstrow.insertCell(0);
+                    var x2 = firstrow.insertCell(1);
+                    var x3 = firstrow.insertCell(2);
+                    var x4 = firstrow.insertCell(3);
+
+
+                    x1.innerHTML = output.user;
+                    x2.innerHTML = output.moves;
+                    x3.innerHTML = output.pairsLeft;
+                    x4.innerHTML = "not yet confirmed";
+
+                })
+            })
+        }
+
+
+    </script>
+    <script>//script to convert from unix time
+        function convertunix(t) {
+
+
+            var months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+            var date = new Date(t * 1000);
+
+
+            var year = date.getFullYear();
+
+
+            var month = months_arr[date.getMonth()];
+
+
+            var day = date.getDate();
+
+
+            var hours = date.getHours();
+
+
+            var minutes = "0" + date.getMinutes();
+
+
+            var seconds = "0" + date.getSeconds();
+
+
+            var convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+            return convdataTime;
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
